@@ -5,7 +5,7 @@ public class App
 {
     public static void main( String[] args )
     {
-    	PokemonInterface pok=new PokemonInterface();
+    	PokemonInterface jeu= new PokemonInterface();
     	
     }
 }

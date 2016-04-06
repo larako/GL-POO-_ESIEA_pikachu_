@@ -41,4 +41,8 @@ public class Attack {
 	public int getPp() {
 		return this.pp;
 	}
+	
+	public void setPp(int pp){
+		this.pp=pp;
+	}
 }

@@ -58,6 +58,10 @@ public class Pokemon {
 		return attacks;
 	}
 	
+	public ArrayList<Attack> getAtta(){
+		return this.attacks;
+	}
+	
 	public String getSprite() {
 		return this.sprite;
 	}
@@ -66,24 +70,24 @@ public class Pokemon {
 	 * Setter
 	 */
 	
-	public String setName(String name) {
-		return this.name = name;
+	public void setName(String name) {
+		this.name = name;
 	}
 	
-	public int getHp(int hp) {
-		return this.hp = hp;
+	public void setHp(int hp) {
+		this.hp = hp;
 	}
 	
-	public int getAtt(int att) {
-		return this.att = att;
+	public void setAtt(int att) {
+		this.att = att;
 	}
 	
-	public int getDef(int def) {
-		return this.def = def;
+	public void setDef(int def) {
+		this.def = def;
 	}
 	
-	public int getSpeed(int speed) {
-		return this.speed = speed;
+	public void setSpeed(int speed) {
+		this.speed = speed;
 	}
 	
 	

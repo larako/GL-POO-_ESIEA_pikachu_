@@ -21,25 +21,41 @@ public class PokemonInterface extends JPanel{
 	public String nomPokemon2;
 	StatInterface stat= new StatInterface();
 	JFrame frame=new JFrame();
-	
+	public static Pokemon pokemon1;
+	public static Pokemon pokemon2;
+	public MoteurDeJeu jeu;
+
 	public PokemonInterface(){
+		  EuromillionDAO eurom= new EuromillionDAO();
+			boule1=eurom.boule1Aleatoire();
+			boule2=eurom.boule2Aleatoire();
+			
+			pokemonID1=boule1%12+1;
+			pokemonID2=boule2%12+1;
+		
+	    pokemon1=new Pokemon(pokemonID1);
+		pokemon2=new Pokemon(pokemonID2);
 		
 		frame.setSize(1000,500);
         frame.setLayout(new BorderLayout());
-        frame.setVisible(true);
+        frame.setVisible(true);    
+      
 		JPanel container = new JPanel();
 		container.setLayout(new GridLayout(1,2));
 	    container.add(this);
 	    container.add(stat);
 	    frame.add(container);
+	    
 			
 		repaint();
+		jeu=new MoteurDeJeu(pokemon1,pokemon2);	
 	}
 	
-	
-	public void paintComponent (Graphics g){
-	
-		
+	public Pokemon getPokemon(int number){
+    	if (number==1) return pokemon1;
+    	else return pokemon2;
+    }
+	public void paintComponent (Graphics g){		
 		try {
 
 			Image arrierePlan = ImageIO.read(new File("images/desert.png"));
@@ -50,19 +66,9 @@ public class PokemonInterface extends JPanel{
 			e.printStackTrace();
 		}
 		
-		EuromillionDAO eurom= new EuromillionDAO();
-		boule1=eurom.boule1Aleatoire();
-		boule2=eurom.boule2Aleatoire();
 		
-		pokemonID1=boule1%12+1;
-		pokemonID2=boule2%12+1;
-		//on va chercher le pokemon a l'id pokemon1
-		
-		Pokemon pokemon1=new Pokemon(pokemonID1);
-		Pokemon pokemon2=new Pokemon(pokemonID2);
-		
-		nomPokemon1=pokemon1.getName();
-		nomPokemon2=pokemon2.getName();
+		this.nomPokemon1=pokemon1.getName();
+		this.nomPokemon2=pokemon2.getName();
 		
 		System.out.println("aa"+pokemonID2+" "+nomPokemon1+" "+nomPokemon2);
 		try {
