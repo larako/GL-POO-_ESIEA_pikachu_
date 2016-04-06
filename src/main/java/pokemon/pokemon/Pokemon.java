@@ -50,7 +50,7 @@ public class Pokemon {
 		return this.speed;
 	}
 	
-	public String getAttacks(){
+	public String getStringAttacks(){
 		String attacks = "\t";
 		for (Attack attack : this.attacks) {
 			attacks += attack + "\n\t";
@@ -64,6 +64,10 @@ public class Pokemon {
 	
 	public String getSprite() {
 		return this.sprite;
+	}
+	
+	public ArrayList<Attack> getAttacks() {
+		return this.attacks;
 	}
 	
 	/*
