@@ -1,5 +1,7 @@
 package pokemon.pokemon;
 
+import java.util.Random;
+
 
 public class MoteurDeJeu {
 	
@@ -17,7 +19,7 @@ public class MoteurDeJeu {
     	
 			this.joueur=pokemon1;
 			this.IA=pokemon2;
-			System.out.println(joueur);
+		//	System.out.println(joueur);
 		    start=whoStart();
 		    
 	}       	
@@ -25,37 +27,51 @@ public class MoteurDeJeu {
     public boolean RapportSpeed(){
     	double result=0;
     	result=(double) joueur.getSpeed()/IA.getSpeed();
-    	int random= (int)Math.random()*10;
+    	Random r= new Random();
+    	int random= (int)r.nextInt(10);
+    //	System.out.println("random: "+random);
     	if(random<result) return true;
     	else return false;
     }
  
     
     public Attack IARandomAttack(){
-    	int random=(int) Math.random()*4;
+    	Random r= new Random();
+    	int random= (int)r.nextInt(4);
     	return IA.getAtta().get(random);    	
     }
 	
     public void attaquer(Attack chosen,Pokemon pok1,Pokemon pok2){
-    	int division= chosen.getValue() / pok1.getAtt();
+    	int division= chosen.getValue() / pok1.getDef();
     	int somme;
     	
     	if(division<1)
-    	somme= Math.abs(division*10-pok2.getDef());
+    	somme= Math.abs(division*10+pok2.getAtt()%20);
     	
-    	else somme=Math.abs(division-pok2.getDef());
+    	else somme=Math.abs(division-pok2.getAtt()%20);
     	
     	chosen.setPp(chosen.getPp()-1);
     	int hp=pok2.getHp();
     	pok2.setHp(hp-somme);
     	if(pok2.getHp()<=0){
     		gameOver=true;
+    		System.out.println("GAME OVER - "+ pok1.getName()+ " win and "+ pok2.getName()+ " lose");
+    		
     	}
     }
     
+    public boolean gameOver(){
+    	return this.gameOver;
+    }
+    
     public void choiceAttaque(Attack a){    	
-           this.a=a;;
+           this.a=a;
+           if(a.getPp()<=0){
+        	   System.out.println("L'attaque n'est plus disponible! Veuillez rechoisir une attaque.");
+           }
+           else{
            JoueurPlay();
+           }
     }
     
     public Pokemon whoStart(){
@@ -78,14 +94,13 @@ public class MoteurDeJeu {
     	
         if(turn==joueur){
         	
-    		System.out.println("Voici les différentes attaques. Choisissez en une");
-    		System.out.println(joueur.getAttacks());
-    	
-
+    	//	System.out.println("Voici les différentes attaques. Choisissez en une");
+    	//	System.out.println(joueur.getAttacks());
     		System.out.println("Vous avez Choisi"+ a);
     		attaquer(a,joueur,IA);
     		System.out.println("HP de l'IA: "+ IA.getHp());
     		turn=IA;
+    		if(gameOver()) return;
     		JoueurPlay();
         }
         
@@ -94,6 +109,8 @@ public class MoteurDeJeu {
         else{
         	IAattack=IARandomAttack();
         	attaquer(IAattack,IA,joueur);
+        	System.out.println("HP de joueur: "+ joueur.getHp()+" avec l'attaque: "+ IAattack);
+        	if(gameOver()) return;
         	turn=joueur;
         }
     }
