@@ -46,8 +46,8 @@ public class MoteurDeJeu {
 		// int division= ( 42*chosen.getValue()*pok2.getAtt() ) /
 		// (pok1.getDef()*50);
            System.out.println("valeur de l'attaque " + chosen.getValue());
-		if (chosen.getValue()<0) {
-			int somme = (42 * chosen.getValue() * pok2.getAtt()) / (pok1.getDef() * 50);
+		if (chosen.getValue()>0) {
+			int somme = (chosen.getValue() * pok2.getAtt()) / (pok1.getDef() * 50);
 
 			/*
 			 * if(division<1) somme= Math.abs(division*10+pok2.getAtt()%20);
