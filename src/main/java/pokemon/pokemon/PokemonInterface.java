@@ -35,6 +35,7 @@ public class PokemonInterface extends JPanel implements ActionListener{
 	public String attack3;
 	public String attack4;
 	public MoteurDeJeu jeu;
+	private boolean gameOver=false;
 
 	public PokemonInterface(){
 		  EuromillionDAO eurom= new EuromillionDAO();
@@ -117,7 +118,7 @@ public class PokemonInterface extends JPanel implements ActionListener{
 		this.nomPokemon1=pokemon1.getName();
 		this.nomPokemon2=pokemon2.getName();
 		
-		System.out.println("aa"+pokemonID2+" "+nomPokemon1+" "+nomPokemon2);
+	//	System.out.println("aa"+pokemonID2+" "+nomPokemon1+" "+nomPokemon2);
 		try {
 			Image imgPokemon1 = ImageIO.read(new File("images/"+nomPokemon1+"Dos.png"));
 			g.drawImage(imgPokemon1, -150, 220, this);
@@ -138,17 +139,26 @@ public class PokemonInterface extends JPanel implements ActionListener{
 			
 	}
 	public void actionPerformed(ActionEvent  e) {	
-		if(e.getActionCommand().equals("1")){
-			//attack1
+		if(e.getActionCommand().equals("1") && !gameOver){
+			
+			System.out.println("attaque 1");
+			jeu.choiceAttaque(attackPokemon.getAtta().get(0)); 
+			if(jeu.gameOver()) gameOver=true;;
 		}
-		if(e.getActionCommand().equals("2")){
-			//attack2
+		if(e.getActionCommand().equals("2") && !gameOver){
+			System.out.println("attaque 2");
+			jeu.choiceAttaque(attackPokemon.getAtta().get(1)); 
+			if(jeu.gameOver()) gameOver=true;;
 		}
-		if(e.getActionCommand().equals("3")){
-			//attack3
+		if(e.getActionCommand().equals("3") && !gameOver){
+			System.out.println("attaque 3");
+			jeu.choiceAttaque(attackPokemon.getAtta().get(2));
+			if(jeu.gameOver()) gameOver=true;;
 		}
-		if(e.getActionCommand().equals("4")){
-			//attack4
+		if(e.getActionCommand().equals("4") && !gameOver){
+			System.out.println("attaque 4");
+			jeu.choiceAttaque(attackPokemon.getAtta().get(3));
+			if(jeu.gameOver()) gameOver=true;;
 		}
 		
 	}
