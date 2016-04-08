@@ -11,6 +11,7 @@ public class MoteurDeJeu {
 	private int boule1, boule2;
 	private int pokemonID1, pokemonID2;
 	private Attack a;
+	private boolean deplacementPok2;
 	private Attack IAattack;
 	public boolean gameOver = false;
 
@@ -18,6 +19,7 @@ public class MoteurDeJeu {
 
 		this.joueur = pokemon1;
 		this.IA = pokemon2;
+		deplacementPok2=false;
 		// System.out.println(joueur);
 		start = whoStart();
 
@@ -116,9 +118,9 @@ public class MoteurDeJeu {
 	public void JoueurPlay() {
 
 		if (turn == joueur) {
-
 			// System.out.println("Voici les différentes attaques. Choisissez en une");
 			// System.out.println(joueur.getAttacks());
+			deplacementPok2=false;
 			System.out.println("Vous avez Choisi" + a);
 			attaquer(a, joueur, IA);
 			System.out.println("HP de l'IA: " + IA.getHp());
@@ -130,10 +132,11 @@ public class MoteurDeJeu {
 
 		else {
 			try {
-				Thread.sleep(1000); // 1000 milliseconds is one second.
+				Thread.sleep(000); // 1000 milliseconds is one second.
 			} catch (InterruptedException ex) {
 				Thread.currentThread().interrupt();
 			}
+			deplacementPok2=true;
 			IAattack = IARandomAttack();
 			attaquer(IAattack, IA, joueur);
 			System.out.println("HP de joueur: " + joueur.getHp()
@@ -143,5 +146,7 @@ public class MoteurDeJeu {
 			turn = joueur;
 		}
 	}
+	
+	
 
 }

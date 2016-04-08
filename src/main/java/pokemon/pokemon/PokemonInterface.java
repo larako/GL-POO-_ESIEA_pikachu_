@@ -1,16 +1,12 @@
 package pokemon.pokemon;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.*;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
@@ -34,7 +30,14 @@ public class PokemonInterface extends JPanel implements ActionListener{
 	public String attack2;
 	public String attack3;
 	public String attack4;
+	private boolean deplacementPok1=false;
+	private boolean deplacementPok2=false;
+	private int x1=-150;
+	private int x2=100;
+	private int y1=220;
+	private int y2=-150;
 	public MoteurDeJeu jeu;
+	private boolean test= false;
 	private boolean gameOver=false;
 
 	public PokemonInterface(){
@@ -42,6 +45,7 @@ public class PokemonInterface extends JPanel implements ActionListener{
 		  
 			boule1=eurom.boule1Aleatoire();
 			boule2=eurom.boule2Aleatoire();
+			
 			
 			pokemonID1=boule1%12+1;
 			pokemonID2=boule2%12+1;
@@ -103,7 +107,21 @@ public class PokemonInterface extends JPanel implements ActionListener{
     	if (number==1) return pokemon1;
     	else return pokemon2;
     }
+	
 	public void paintComponent (Graphics g){		
+		
+		if (deplacementPok1==true){
+			if (x1<-100){
+				x1=x1+60;
+			}
+			else{
+				deplacementPok1=false;
+				deplacementPok2=true; //ensuite on fait se deplacer l'IA 1s apres 	
+				x1=-150;
+			}
+		}		
+		
+		
 		try {
 
 			Image arrierePlan = ImageIO.read(new File("images/desert.png"));
@@ -114,16 +132,16 @@ public class PokemonInterface extends JPanel implements ActionListener{
 			e.printStackTrace();
 		}
 		
-		
 		this.nomPokemon1=pokemon1.getName();
 		this.nomPokemon2=pokemon2.getName();
 		
 	//	System.out.println("aa"+pokemonID2+" "+nomPokemon1+" "+nomPokemon2);
 		try {
 			Image imgPokemon1 = ImageIO.read(new File("images/"+nomPokemon1+"Dos.png"));
-			g.drawImage(imgPokemon1, -150, 220, this);
+			g.drawImage(imgPokemon1, x1, y1, this);
 			Image imgPokemon2 = ImageIO.read(new File("images/"+nomPokemon2+".png"));
-			g.drawImage(imgPokemon2, 100, -150, this);
+			g.drawImage(imgPokemon2, x2, y2, this);
+				
 		}
 		catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -134,28 +152,58 @@ public class PokemonInterface extends JPanel implements ActionListener{
 		stat.setPokemonID2(pokemonID2);
 		stat.lancement();
 		
-
+		if (deplacementPok2==true){
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}		
+			if (x2>50){
+			x2=x2-60;
+		}
+		else{
+			deplacementPok2=false;
+			x2=100;		
+		}		
+	}
+		
+		repaint();
 				
 			
 	}
 	public void actionPerformed(ActionEvent  e) {	
 		if(e.getActionCommand().equals("1") && !gameOver){
 			
+			deplacementPok1=true;
+			repaint();
 			System.out.println("attaque 1");
-			jeu.choiceAttaque(attackPokemon.getAtta().get(0)); 
+			//jeu.choiceAttaque(attackPokemon.getAtta().get(0));
+			
 			if(jeu.gameOver()) gameOver=true;;
+			
+			
 		}
 		if(e.getActionCommand().equals("2") && !gameOver){
+			
+			deplacementPok1=true;
+			repaint();
 			System.out.println("attaque 2");
 			jeu.choiceAttaque(attackPokemon.getAtta().get(1)); 
 			if(jeu.gameOver()) gameOver=true;;
 		}
 		if(e.getActionCommand().equals("3") && !gameOver){
+						
+			deplacementPok1=true;
+			repaint();
 			System.out.println("attaque 3");
 			jeu.choiceAttaque(attackPokemon.getAtta().get(2));
 			if(jeu.gameOver()) gameOver=true;;
 		}
 		if(e.getActionCommand().equals("4") && !gameOver){
+			
+			deplacementPok1=true;
+			repaint();
 			System.out.println("attaque 4");
 			jeu.choiceAttaque(attackPokemon.getAtta().get(3));
 			if(jeu.gameOver()) gameOver=true;;
