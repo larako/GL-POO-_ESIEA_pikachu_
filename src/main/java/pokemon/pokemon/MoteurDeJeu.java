@@ -43,17 +43,12 @@ public class MoteurDeJeu {
 
 	public void attaquer(Attack chosen, Pokemon pok1, Pokemon pok2) {
 		
-		// int division= ( 42*chosen.getValue()*pok2.getAtt() ) /
-		// (pok1.getDef()*50);
+
            System.out.println("valeur de l'attaque " + chosen.getValue());
+           
 		if (chosen.getValue()>0) {
 			int somme = (chosen.getValue() * pok2.getAtt()) / (pok1.getDef() * 50);
-
-			/*
-			 * if(division<1) somme= Math.abs(division*10+pok2.getAtt()%20);
-			 * 
-			 * else somme=Math.abs(division-pok2.getAtt()%20);
-			 */
+	
 
 			chosen.setPp(chosen.getPp() - 1);
 			int hp = pok2.getHp();

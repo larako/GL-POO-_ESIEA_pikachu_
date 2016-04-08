@@ -1,7 +1,7 @@
 package pokemon.pokemon;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -9,8 +9,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
@@ -24,7 +22,7 @@ public class PokemonInterface extends JPanel implements ActionListener{
 	public int boule2;
 	public int pokemonID2;
 	public String nomPokemon2;
-	StatInterface stat= new StatInterface();
+	StatInterface stat;
 	JFrame frame=new JFrame();
 	public static Pokemon pokemon1;
 	public static Pokemon pokemon2;
@@ -49,8 +47,8 @@ public class PokemonInterface extends JPanel implements ActionListener{
 	    pokemon1=new Pokemon(pokemonID1);
 		pokemon2=new Pokemon(pokemonID2);
 		attackPokemon=new Pokemon(pokemonID1);
-		
-		frame.setSize(1000,500);
+		stat=new StatInterface(pokemon1,pokemon2);
+		frame.setSize(1200,600);
         frame.setLayout(new BorderLayout());
         frame.setVisible(true);    
         
