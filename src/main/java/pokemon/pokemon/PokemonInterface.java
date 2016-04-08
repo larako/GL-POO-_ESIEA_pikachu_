@@ -139,16 +139,21 @@ public class PokemonInterface extends JPanel implements ActionListener{
 	}
 	public void actionPerformed(ActionEvent  e) {	
 		if(e.getActionCommand().equals("1")){
+			
 			System.out.println("attaque 1");
+			jeu.choiceAttaque(attackPokemon.getAtta().get(0)); 
 		}
 		if(e.getActionCommand().equals("2")){
 			System.out.println("attaque 2");
+			jeu.choiceAttaque(attackPokemon.getAtta().get(1)); 
 		}
 		if(e.getActionCommand().equals("3")){
 			System.out.println("attaque 3");
+			jeu.choiceAttaque(attackPokemon.getAtta().get(2)); 
 		}
 		if(e.getActionCommand().equals("4")){
 			System.out.println("attaque 4");
+			jeu.choiceAttaque(attackPokemon.getAtta().get(3)); 
 		}
 		
 	}
