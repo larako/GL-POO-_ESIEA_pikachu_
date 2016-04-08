@@ -41,6 +41,7 @@ public class Pokemon {
 	public int getAtt() {
 		return this.att;
 	}
+
 	
 	public int getDef() {
 		return this.def;
