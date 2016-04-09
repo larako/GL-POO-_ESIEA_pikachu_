@@ -102,7 +102,7 @@ public class Pokemon {
 	 */
 	
 	public String toString() {
-		return "Nom: " + getName() + "\n" + "Hp: " + getHp() + "\n" + "Def: " 
+		return "Nom: " + getName() + "\n" + "Hp: " + getHp() + "\n" + "Att: " + getAtt() + "\n" + "Def: " 
 				+ getDef() + "\n" + "Speed: " + getSpeed() + "\n"
 				+ "Attacks: \n" + getAttacks();
 	}

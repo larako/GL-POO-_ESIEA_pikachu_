@@ -22,7 +22,7 @@ public class Attack {
 	
 	public String toString() {
 		return "{name : " + this.name + ", type : " + this.type
-				+ ", value : " + this.value + ", value : " + this.value
+				+ ", value : " + this.value
 				+ " number: " + this.pp + " }";
 	}
 	
