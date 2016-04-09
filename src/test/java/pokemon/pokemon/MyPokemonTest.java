@@ -1,0 +1,52 @@
+package pokemon.pokemon;
+
+import static junit.framework.Assert.assertEquals;
+
+import java.util.ArrayList;
+
+import org.junit.Before;
+import org.junit.Test;
+
+public class MyPokemonTest {
+	
+	@Test
+	public void testPokemonId1() {
+		Pokemon poke = new Pokemon(1);
+		ArrayList<Object> exp = putAll(100, 50, 50, 30);
+		ArrayList<Object> res = putAll(poke.getHp(), poke.getAtt(), poke.getDef(), poke.getSpeed());
+		assertEquals(exp, res);		
+	}
+	
+	@Test
+	public void testPokemonId4() {
+		Pokemon poke = new Pokemon(4);
+		ArrayList<Object> exp = putAll(30, 56, 35, 72);
+		ArrayList<Object> res = putAll(poke.getHp(), poke.getAtt(), poke.getDef(), poke.getSpeed());
+		assertEquals(exp, res);
+	}
+	
+	@Test
+	public void testAttackId1() {
+		Attack att = new Attack(1);
+		ArrayList<Object> exp = putAll("lance-flammes", "feu", 100, 15);
+		ArrayList<Object> res = putAll(att.getName(), att.getType(), att.getValue(), att.getPp());
+		assertEquals(exp, res);
+	}
+	
+	@Test
+	public void testAttackId12() {
+		Attack att = new Attack(12);
+		ArrayList<Object> exp = putAll("megaphone", "normal", 90, 15);
+		ArrayList<Object> res = putAll(att.getName(), att.getType(), att.getValue(), att.getPp());
+		assertEquals(exp, res);
+	}
+	
+	public ArrayList<Object> putAll(Object... info) {
+		ArrayList<Object> array = new ArrayList<Object>();
+		for (int i = 0; i < info.length; i++) {
+			array.add(info[i]);
+		}
+		return array;
+	}
+	
+}
