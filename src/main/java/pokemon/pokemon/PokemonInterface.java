@@ -202,8 +202,7 @@ public class PokemonInterface extends JPanel implements ActionListener{
 			deplacementPok1=true;
 			repaint();
 			LOGGER.debug("attaque 1");
-			//System.out.println("attaque 1");
-			//jeu.choiceAttaque(attackPokemon.getAtta().get(0));
+			jeu.choiceAttaque(attackPokemon.getAtta().get(0));
 			
 			if(jeu.gameOver()) gameOver=true;;
 			
