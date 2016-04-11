@@ -1,10 +1,9 @@
 package pokemon.pokemon;
 
 import java.awt.Color;
-<<<<<<< HEAD
-=======
+
 import java.awt.Font;
->>>>>>> 8cee23403b28da5a77586f32a995d446eb04ff6e
+
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
@@ -24,14 +23,14 @@ public class StatInterface extends JPanel{
 	private static final long serialVersionUID = 1L;
 	public int pokemonId1;
 	public int pokemonId2;
-<<<<<<< HEAD
+//<<<<<<< HEAD
 	public Pokemon pok1;
 	public Pokemon pok2;
 	
 	public StatInterface(Pokemon pok1,Pokemon pok2){
 		this.pok1=pok1;
-		this.pok2=pok2;
-=======
+		this.pok2=pok2;}
+//=======
 	private int hpP1;
 	private String nomPokemon1;
 	private int attaqueP1;
@@ -47,7 +46,7 @@ public class StatInterface extends JPanel{
 	
 	public StatInterface(){
 		 
->>>>>>> 8cee23403b28da5a77586f32a995d446eb04ff6e
+//>>>>>>> 8cee23403b28da5a77586f32a995d446eb04ff6e
 		
 	}
 	
@@ -57,20 +56,11 @@ public class StatInterface extends JPanel{
 	
 	
 	public void paintComponent(Graphics g){
-<<<<<<< HEAD
-		try {
-			
-			Image imgPokemon1 = ImageIO.read(new File("images/pikachuDos.png"));
-			g.drawImage(imgPokemon1, -150, 220, this);
-		}
-		catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-=======
+
 				
 		if(pokemonId1!=0 && pokemonId2!=0){
-			Pokemon pokemon1=new Pokemon(pokemonId1);
-			Pokemon pokemon2=new Pokemon(pokemonId2);	
+			Pokemon pokemon1=pok1;
+			Pokemon pokemon2=pok2;	
 
 			//Stats Pokemon1
 			hpP1=pokemon1.getHp();
@@ -90,21 +80,21 @@ public class StatInterface extends JPanel{
 			g.setFont(f);
 			g.setColor(Color.BLACK);
 			
-			g.drawString("Nom Pokemon: "+nomPokemon2,100,50);
-			g.drawString("HP: "+hpP2,150,80);
-			g.drawString("Attaque: "+attaqueP2,150,110);
-			g.drawString("Vitesse: "+speedP2,150,140);
-			g.drawString("Defense: "+defP2,150,170);
+			g.drawString("Nom Pokemon: "+nomPokemon2,450,50);
+			g.drawString("HP: "+hpP2,500,80);
+			g.drawString("Attaque: "+attaqueP2,500,110);
+			g.drawString("Vitesse: "+speedP2,500,140);
+			g.drawString("Defense: "+defP2,500,170);
 			
 			g.drawString("Nom Pokemon: "+nomPokemon1,100,280);
 			g.drawString("HP: "+hpP1,150,310);
 			g.drawString("Attaque: "+attaqueP1,150,340);
 			g.drawString("Vitesse: "+speedP1,150,370);
 			g.drawString("Defense: "+defP1,150,400);
-			//System.out.println("a"+ hp);
->>>>>>> 8cee23403b28da5a77586f32a995d446eb04ff6e
+		
 		}
 	//System.out.println("a"+ pokemonId1);
+	
 	
 	}
 	

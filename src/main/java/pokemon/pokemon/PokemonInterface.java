@@ -62,14 +62,14 @@ public class PokemonInterface extends JPanel implements ActionListener{
 		
 		stat = new StatInterface(pokemon1,pokemon2);
 		
-		frame.setSize(1200,600);
+		frame.setSize(800,600);
         frame.setLayout(new BorderLayout());
         frame.setVisible(true);    
         
 		JPanel container = new JPanel();
-		container.setLayout(new GridLayout(1,2));
-	    container.add(this, BorderLayout.EAST);
-	    container.add(stat);
+		container.setLayout(new GridLayout());
+	    container.add(this);
+	    //container.add(stat);
 	    frame.add(container);
         
 	    attack1=attackPokemon.getAtta().get(0).getName();
@@ -158,7 +158,8 @@ public class PokemonInterface extends JPanel implements ActionListener{
 		
 		stat.setPokemonID1(pokemonID1);
 		stat.setPokemonID2(pokemonID2);
-		stat.lancement();
+		stat.paintComponent(g);
+		//stat.lancement();
 		
 		if (deplacementPok2){
 			try {

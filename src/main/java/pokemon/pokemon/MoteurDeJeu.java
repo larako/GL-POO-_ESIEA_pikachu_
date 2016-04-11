@@ -49,7 +49,7 @@ public class MoteurDeJeu {
            System.out.println("valeur de l'attaque " + chosen.getValue());
            
 		if (chosen.getValue()>0) {
-			int somme = (chosen.getValue() * pok2.getAtt()) / (pok1.getDef() * 50);
+			int somme = (chosen.getValue() * pok2.getAtt()) / (pok1.getDef() * 15);
 	
 
 			chosen.setPp(chosen.getPp() - 1);
