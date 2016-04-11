@@ -1,7 +1,9 @@
 package pokemon.pokemon;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -116,7 +118,8 @@ public class PokemonInterface extends JPanel implements ActionListener{
     	else return pokemon2;
     }
 	
-	public void paintComponent (Graphics g){		
+	public void paintComponent (Graphics g){	
+		
 		
 		if (deplacementPok1){
 			if (x1 < -100){
@@ -175,6 +178,18 @@ public class PokemonInterface extends JPanel implements ActionListener{
 			deplacementPok2=false;
 			x2=100;		
 		}		
+			if(gameOver)
+			{
+				setBackground(Color.black);
+				Font font = new Font("Courier", Font.BOLD, 20);
+				g.setFont(font);
+				g.setColor(Color.red);
+				int x = this.getWidth() / 2;
+				int y = this.getHeight() / 2;
+				g.drawString("Game Over", x, y);
+				g.drawString("the Winner is : "+jeu.Winner().getName(),x,y+30);
+				return;
+			}
 	}
 		
 		repaint();

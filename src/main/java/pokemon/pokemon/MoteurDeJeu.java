@@ -14,6 +14,11 @@ public class MoteurDeJeu {
 	private boolean deplacementPok2;
 	private Attack IAattack;
 	public boolean gameOver = false;
+	public Pokemon winner;
+	
+	public Pokemon Winner(){
+		return this.winner;
+	}
 
 	public MoteurDeJeu(Pokemon pokemon1, Pokemon pokemon2) {
 
@@ -58,6 +63,7 @@ public class MoteurDeJeu {
 
 			if (pok2.getHp() <= 0) {
 				gameOver = true;
+				this.winner=pok1;
 				System.out.println("GAME OVER - " + pok1.getName()
 						+ " win and " + pok2.getName() + " lose");
 
