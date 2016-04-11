@@ -1,28 +1,25 @@
 package pokemon.pokemon;
 
 import java.awt.BorderLayout;
-<<<<<<< HEAD
 import java.awt.Dimension;
-=======
->>>>>>> 8cee23403b28da5a77586f32a995d446eb04ff6e
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-<<<<<<< HEAD
-import java.io.File;
-import java.io.IOException;
-=======
 import java.io.*;
->>>>>>> 8cee23403b28da5a77586f32a995d446eb04ff6e
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import org.apache.log4j.Logger;
+
 public class PokemonInterface extends JPanel implements ActionListener{
+	
+	private static final Logger LOGGER = Logger.getLogger(PokemonInterface.class);
+	
 	public int boule1;
 	public int pokemonID1;
 	public String nomPokemon1;
@@ -62,14 +59,16 @@ public class PokemonInterface extends JPanel implements ActionListener{
 	    pokemon1=new Pokemon(pokemonID1);
 		pokemon2=new Pokemon(pokemonID2);
 		attackPokemon=new Pokemon(pokemonID1);
-		stat=new StatInterface(pokemon1,pokemon2);
+		
+		stat = new StatInterface(pokemon1,pokemon2);
+		
 		frame.setSize(1200,600);
         frame.setLayout(new BorderLayout());
         frame.setVisible(true);    
         
 		JPanel container = new JPanel();
 		container.setLayout(new GridLayout(1,2));
-	    container.add(this);
+	    container.add(this, BorderLayout.EAST);
 	    container.add(stat);
 	    frame.add(container);
         
@@ -109,7 +108,7 @@ public class PokemonInterface extends JPanel implements ActionListener{
 	    this.setVisible(true);
 			
 		repaint();
-		jeu=new MoteurDeJeu(pokemon1,pokemon2);	
+		jeu = new MoteurDeJeu(pokemon1,pokemon2);	
 	}
 	
 	public Pokemon getPokemon(int number){
@@ -119,14 +118,14 @@ public class PokemonInterface extends JPanel implements ActionListener{
 	
 	public void paintComponent (Graphics g){		
 		
-		if (deplacementPok1==true){
-			if (x1<-100){
-				x1=x1+60;
+		if (deplacementPok1){
+			if (x1 < -100){
+				x1 = x1 + 60;
 			}
 			else{
-				deplacementPok1=false;
-				deplacementPok2=true; //ensuite on fait se deplacer l'IA 1s apres 	
-				x1=-150;
+				deplacementPok1 = false;
+				deplacementPok2 = true; //ensuite on fait se deplacer l'IA 1s apres 	
+				x1 = -150;
 			}
 		}		
 		
@@ -141,8 +140,8 @@ public class PokemonInterface extends JPanel implements ActionListener{
 			e.printStackTrace();
 		}
 		
-		this.nomPokemon1=pokemon1.getName();
-		this.nomPokemon2=pokemon2.getName();
+		this.nomPokemon1 = pokemon1.getName();
+		this.nomPokemon2 = pokemon2.getName();
 		
 	//	System.out.println("aa"+pokemonID2+" "+nomPokemon1+" "+nomPokemon2);
 		try {
@@ -161,7 +160,7 @@ public class PokemonInterface extends JPanel implements ActionListener{
 		stat.setPokemonID2(pokemonID2);
 		stat.lancement();
 		
-		if (deplacementPok2==true){
+		if (deplacementPok2){
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
@@ -186,7 +185,8 @@ public class PokemonInterface extends JPanel implements ActionListener{
 			
 			deplacementPok1=true;
 			repaint();
-			System.out.println("attaque 1");
+			LOGGER.debug("attaque 1");
+			//System.out.println("attaque 1");
 			//jeu.choiceAttaque(attackPokemon.getAtta().get(0));
 			
 			if(jeu.gameOver()) gameOver=true;;
@@ -197,7 +197,7 @@ public class PokemonInterface extends JPanel implements ActionListener{
 			
 			deplacementPok1=true;
 			repaint();
-			System.out.println("attaque 2");
+			LOGGER.debug("attaque 2");
 			jeu.choiceAttaque(attackPokemon.getAtta().get(1)); 
 			if(jeu.gameOver()) gameOver=true;;
 		}
@@ -205,7 +205,7 @@ public class PokemonInterface extends JPanel implements ActionListener{
 						
 			deplacementPok1=true;
 			repaint();
-			System.out.println("attaque 3");
+			LOGGER.debug("attaque 3");
 			jeu.choiceAttaque(attackPokemon.getAtta().get(2));
 			if(jeu.gameOver()) gameOver=true;;
 		}
@@ -213,7 +213,7 @@ public class PokemonInterface extends JPanel implements ActionListener{
 			
 			deplacementPok1=true;
 			repaint();
-			System.out.println("attaque 4");
+			LOGGER.debug("attaque 4");
 			jeu.choiceAttaque(attackPokemon.getAtta().get(3));
 			if(jeu.gameOver()) gameOver=true;;
 		}
