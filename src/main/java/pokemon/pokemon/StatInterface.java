@@ -80,17 +80,17 @@ public class StatInterface extends JPanel{
 			g.setFont(f);
 			g.setColor(Color.BLACK);
 			
-			g.drawString("Nom Pokemon: "+nomPokemon2,450,50);
-			g.drawString("HP: "+hpP2,500,80);
-			g.drawString("Attaque: "+attaqueP2,500,110);
-			g.drawString("Vitesse: "+speedP2,500,140);
-			g.drawString("Defense: "+defP2,500,170);
+			g.drawString("Nom Pokemon: "+nomPokemon2,450,150);
+			g.drawString("HP: "+hpP2,500,180);
+			g.drawString("Attaque: "+attaqueP2,500,210);
+			g.drawString("Vitesse: "+speedP2,500,240);
+			g.drawString("Defense: "+defP2,500,270);
 			
-			g.drawString("Nom Pokemon: "+nomPokemon1,100,280);
-			g.drawString("HP: "+hpP1,150,310);
-			g.drawString("Attaque: "+attaqueP1,150,340);
-			g.drawString("Vitesse: "+speedP1,150,370);
-			g.drawString("Defense: "+defP1,150,400);
+			g.drawString("Nom Pokemon: "+nomPokemon1,100,480);
+			g.drawString("HP: "+hpP1,150,510);
+			g.drawString("Attaque: "+attaqueP1,150,540);
+			g.drawString("Vitesse: "+speedP1,150,570);
+			g.drawString("Defense: "+defP1,150,600);
 		
 		}
 	//System.out.println("a"+ pokemonId1);

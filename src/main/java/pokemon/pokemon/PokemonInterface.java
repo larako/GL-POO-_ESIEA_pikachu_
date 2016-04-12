@@ -42,8 +42,8 @@ public class PokemonInterface extends JPanel implements ActionListener{
 	private boolean deplacementPok2=false;
 	private int x1=-150;
 	private int x2=100;
-	private int y1=220;
-	private int y2=-150;
+	private int y1=420;
+	private int y2=-50;
 	public MoteurDeJeu jeu;
 	private boolean test= false;
 	private boolean gameOver=false;
@@ -64,7 +64,7 @@ public class PokemonInterface extends JPanel implements ActionListener{
 		
 		stat = new StatInterface(pokemon1,pokemon2);
 		
-		frame.setSize(800,600);
+		frame.setSize(800,840);
         frame.setLayout(new BorderLayout());
         frame.setVisible(true);    
         
@@ -83,14 +83,14 @@ public class PokemonInterface extends JPanel implements ActionListener{
 		
 		JButton nomAttack1= new JButton(""+attack1);
 		nomAttack1.addActionListener(this);
-		nomAttack1.setBounds(200,450,140,20);
+		nomAttack1.setBounds(200,650,140,20);
 		nomAttack1.setActionCommand("1"); 
 		this.add(nomAttack1);
 	    this.setVisible(true);
 	    
 	    JButton nomAttack2= new JButton(""+attack2);
 		nomAttack2.addActionListener(this);
-		nomAttack2.setBounds(200,420,140,20);
+		nomAttack2.setBounds(200,620,140,20);
 		nomAttack2.setActionCommand("2");
 	    this.add(nomAttack2);
 	    this.setVisible(true);
@@ -98,14 +98,14 @@ public class PokemonInterface extends JPanel implements ActionListener{
 	    JButton nomAttack3= new JButton(""+attack3);
 		nomAttack3.addActionListener(this);
 		nomAttack3.setActionCommand("3");
-		nomAttack3.setBounds(350,420,140,20);
+		nomAttack3.setBounds(350,620,140,20);
 	    this.add(nomAttack3);
 	    this.setVisible(true);
 	    
 	    JButton nomAttack4= new JButton(""+attack4);
 		nomAttack4.addActionListener(this);
 		nomAttack4.setActionCommand("4");
-		nomAttack4.setBounds(350,450,140,20);
+		nomAttack4.setBounds(350,650,140,20);
 	    this.add(nomAttack4);
 	    this.setVisible(true);
 			
@@ -136,7 +136,7 @@ public class PokemonInterface extends JPanel implements ActionListener{
 		try {
 
 			Image arrierePlan = ImageIO.read(new File("images/desert.png"));
-			g.drawImage(arrierePlan, 0, 0, this);
+			g.drawImage(arrierePlan, 0, 0,800,840, this);
 		}
 		catch (IOException e) {
 			// TODO Auto-generated catch block
