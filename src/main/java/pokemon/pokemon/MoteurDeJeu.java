@@ -59,7 +59,9 @@ public class MoteurDeJeu {
 
 			chosen.setPp(chosen.getPp() - 1);
 			int hp = pok2.getHp();
+			if(hp-somme>=0)
 			pok2.setHp(hp - somme);
+			else pok2.setHp(0);
 
 			if (pok2.getHp() <= 0) {
 				gameOver = true;

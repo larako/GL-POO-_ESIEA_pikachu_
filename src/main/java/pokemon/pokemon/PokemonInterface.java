@@ -196,7 +196,10 @@ public class PokemonInterface extends JPanel implements ActionListener{
 		Font font = new Font("Arial", Font.BOLD, 20);
 		g.setFont(font);
 		g.setColor(Color.black);
+		if(a.getValue()>0)
 		g.drawString("Vous avez choisi l'attaque: "+a.getName()+" d'une valeur de: "+a.getValue(),100,750);
+		else
+			g.drawString("Vous avez choisi l'attaque: "+a.getName(),200,750);
 		}
 		else{
 			Font font = new Font("Arial", Font.BOLD, 20);
