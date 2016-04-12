@@ -47,6 +47,7 @@ public class PokemonInterface extends JPanel implements ActionListener{
 	public MoteurDeJeu jeu;
 	private boolean test= false;
 	private boolean gameOver=false;
+	private Attack a;
 
 	public PokemonInterface(){
 		  EuromillionDAO eurom= new EuromillionDAO();
@@ -191,7 +192,18 @@ public class PokemonInterface extends JPanel implements ActionListener{
 				return;
 			}
 	}
-		
+		if(a!=null){
+		Font font = new Font("Arial", Font.BOLD, 20);
+		g.setFont(font);
+		g.setColor(Color.black);
+		g.drawString("Vous avez choisi l'attaque: "+a.getName()+" d'une valeur de: "+a.getValue(),100,750);
+		}
+		else{
+			Font font = new Font("Arial", Font.BOLD, 20);
+			g.setFont(font);
+			g.setColor(Color.black);
+			g.drawString("Vous avez : "+pokemon1.getName()+" et vous affrontez: "+pokemon2.getName(),150,750);
+		}
 		repaint();
 				
 			
@@ -203,7 +215,7 @@ public class PokemonInterface extends JPanel implements ActionListener{
 			repaint();
 			LOGGER.debug("attaque 1");
 			jeu.choiceAttaque(attackPokemon.getAtta().get(0));
-			
+			a=attackPokemon.getAtta().get(0);
 			if(jeu.gameOver()) gameOver=true;;
 			
 			
@@ -214,6 +226,7 @@ public class PokemonInterface extends JPanel implements ActionListener{
 			repaint();
 			LOGGER.debug("attaque 2");
 			jeu.choiceAttaque(attackPokemon.getAtta().get(1)); 
+			a=attackPokemon.getAtta().get(1);
 			if(jeu.gameOver()) gameOver=true;;
 		}
 		if(e.getActionCommand().equals("3") && !gameOver){
@@ -222,6 +235,7 @@ public class PokemonInterface extends JPanel implements ActionListener{
 			repaint();
 			LOGGER.debug("attaque 3");
 			jeu.choiceAttaque(attackPokemon.getAtta().get(2));
+			a=attackPokemon.getAtta().get(2);
 			if(jeu.gameOver()) gameOver=true;;
 		}
 		if(e.getActionCommand().equals("4") && !gameOver){
@@ -230,6 +244,7 @@ public class PokemonInterface extends JPanel implements ActionListener{
 			repaint();
 			LOGGER.debug("attaque 4");
 			jeu.choiceAttaque(attackPokemon.getAtta().get(3));
+			a=attackPokemon.getAtta().get(3);
 			if(jeu.gameOver()) gameOver=true;;
 		}
 		
