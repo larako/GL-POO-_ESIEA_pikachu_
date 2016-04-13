@@ -9,6 +9,11 @@ import org.junit.Test;
 
 public class MyPokemonTest {
 	
+	/*
+	 * Test des catactéristiques du 1er pokemon se trouvant dans 
+	 * la base de données
+	 */
+	
 	@Test
 	public void testPokemonId1() {
 		Pokemon poke = new Pokemon(1);
@@ -16,6 +21,11 @@ public class MyPokemonTest {
 		ArrayList<Object> res = putAll(poke.getHp(), poke.getAtt(), poke.getDef(), poke.getSpeed());
 		assertEquals(exp, res);		
 	}
+	
+	/*
+	 * Test des catactéristiques du 4eme pokemon se trouvant dans 
+	 * la base de données
+	 */
 	
 	@Test
 	public void testPokemonId4() {
@@ -25,6 +35,11 @@ public class MyPokemonTest {
 		assertEquals(exp, res);
 	}
 	
+	/*
+	 * Test des catactéristiques de la 1ere attaque se trouvant dans
+	 * la base de données
+	 */
+	
 	@Test
 	public void testAttackId1() {
 		Attack att = new Attack(1);
@@ -32,6 +47,11 @@ public class MyPokemonTest {
 		ArrayList<Object> res = putAll(att.getName(), att.getType(), att.getValue(), att.getPp());
 		assertEquals(exp, res);
 	}
+	
+	/*
+	 * Test des catactéristiques de la 12eme attaque se trouvant dans
+	 * la base de données
+	 */
 	
 	@Test
 	public void testAttackId12() {
