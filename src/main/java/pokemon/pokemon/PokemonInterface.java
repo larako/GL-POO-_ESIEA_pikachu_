@@ -2,18 +2,19 @@ package pokemon.pokemon;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import org.apache.log4j.Logger;
@@ -207,6 +208,7 @@ public class PokemonInterface extends JPanel implements ActionListener{
 		}		
 			if(gameOver)
 			{
+				/*
 				setBackground(Color.black);
 				Font font = new Font("Courier", Font.BOLD, 20);
 				g.setFont(font);
@@ -214,8 +216,10 @@ public class PokemonInterface extends JPanel implements ActionListener{
 				int x = this.getWidth() / 2;
 				int y = this.getHeight() / 2;
 				g.drawString("Game Over", x, y);
-				g.drawString("the Winner is : "+jeu.Winner().getName(),x,y+30);
-				return;
+				g.drawString("the Winner is : "+jeu.Winner().getName(),x,y+30);*/
+				//default title and icon
+				JOptionPane.showMessageDialog(frame, "Game Over"+" the Winner is : "+jeu.Winner().getName());
+				System.exit(0); 
 			}
 	}
 		if(a!=null){
