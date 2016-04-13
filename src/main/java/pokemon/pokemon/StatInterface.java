@@ -23,14 +23,14 @@ public class StatInterface extends JPanel{
 	private static final long serialVersionUID = 1L;
 	public int pokemonId1;
 	public int pokemonId2;
-//<<<<<<< HEAD
+
 	public Pokemon pok1;
 	public Pokemon pok2;
 	
 	public StatInterface(Pokemon pok1,Pokemon pok2){
 		this.pok1=pok1;
 		this.pok2=pok2;}
-//=======
+
 	private int hpP1;
 	private String nomPokemon1;
 	private int attaqueP1;
@@ -46,7 +46,6 @@ public class StatInterface extends JPanel{
 	
 	public StatInterface(){
 		 
-//>>>>>>> 8cee23403b28da5a77586f32a995d446eb04ff6e
 		
 	}
 	

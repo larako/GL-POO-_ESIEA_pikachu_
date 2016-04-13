@@ -2,8 +2,11 @@ package pokemon.pokemon;
 
 import java.util.Random;
 
+import org.apache.log4j.Logger;
+
 public class MoteurDeJeu {
 
+	private static final Logger LOGGER = Logger.getLogger(MoteurDeJeu.class);
 	public Pokemon joueur;
 	public Pokemon IA;
 	public static Pokemon start;
@@ -25,7 +28,6 @@ public class MoteurDeJeu {
 		this.joueur = pokemon1;
 		this.IA = pokemon2;
 		deplacementPok2=false;
-		// System.out.println(joueur);
 		start = whoStart();
 
 	}
@@ -35,7 +37,6 @@ public class MoteurDeJeu {
 		result = (double) joueur.getSpeed() / IA.getSpeed();
 		Random r = new Random();
 		int random = (int) r.nextInt(10);
-		// System.out.println("random: "+random);
 		if (random < result)
 			return true;
 		else
@@ -51,7 +52,7 @@ public class MoteurDeJeu {
 	public void attaquer(Attack chosen, Pokemon pok1, Pokemon pok2) {
 		
 
-           System.out.println("valeur de l'attaque " + chosen.getValue());
+           LOGGER.debug("valeur de l'attaque " + chosen.getValue());
            
 		if (chosen.getValue()>0) {
 			int somme = (chosen.getValue() * pok1.getAtt()) / (pok2.getDef() * 15);
@@ -66,7 +67,7 @@ public class MoteurDeJeu {
 			if (pok2.getHp() <= 0) {
 				gameOver = true;
 				this.winner=pok1;
-				System.out.println("GAME OVER - " + pok1.getName()
+				LOGGER.debug("GAME OVER - " + pok1.getName()
 						+ " win and " + pok2.getName() + " lose");
 
 			}
@@ -92,8 +93,7 @@ public class MoteurDeJeu {
 	public void choiceAttaque(Attack a) {
 		this.a = a;
 		if (a.getPp() <= 0) {
-			System.out
-					.println("L'attaque n'est plus disponible! Veuillez rechoisir une attaque.");
+			LOGGER.debug("L'attaque n'est plus disponible! Veuillez rechoisir une attaque.");
 		} else {
 			JoueurPlay();
 		}
@@ -110,7 +110,7 @@ public class MoteurDeJeu {
 		else
 			startP = IA;
 
-		System.out.println("Pokemon start " + startP);
+		LOGGER.debug("Pokemon start " + startP);
 		turn = startP;
 		if (startP == IA)
 			JoueurPlay();
@@ -124,9 +124,9 @@ public class MoteurDeJeu {
 			// System.out.println("Voici les différentes attaques. Choisissez en une");
 			// System.out.println(joueur.getAttacks());
 			deplacementPok2=false;
-			System.out.println("Vous avez Choisi" + a);
+			LOGGER.debug("Vous avez Choisi" + a);
 			attaquer(a, joueur, IA);
-			System.out.println("HP de l'IA: " + IA.getHp());
+			LOGGER.debug("HP de l'IA: " + IA.getHp());
 			turn = IA;
 			if (gameOver())
 				return;
@@ -142,7 +142,7 @@ public class MoteurDeJeu {
 			deplacementPok2=true;
 			IAattack = IARandomAttack();
 			attaquer(IAattack, IA, joueur);
-			System.out.println("HP de joueur: " + joueur.getHp()
+			LOGGER.debug("HP de joueur: " + joueur.getHp()
 					+ " avec l'attaque: " + IAattack);
 			if (gameOver())
 				return;

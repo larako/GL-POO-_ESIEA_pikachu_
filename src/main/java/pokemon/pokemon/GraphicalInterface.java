@@ -9,7 +9,11 @@ import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+import org.apache.log4j.Logger;
+
 public class GraphicalInterface extends JPanel{
+	
+	private static final Logger LOGGER = Logger.getLogger(GraphicalInterface.class);
 	public int boule1;
 	public int pokemonID1;
 	public String nomPokemon1;
@@ -22,7 +26,6 @@ public class GraphicalInterface extends JPanel{
 	
 	public void lancement(){
 		repaint();
-		System.out.println("repaint !");
 	}
 	
 	
@@ -56,7 +59,7 @@ public class GraphicalInterface extends JPanel{
 		nomPokemon1=pokemon1.getName();
 		nomPokemon2=pokemon2.getName();
 		
-		System.out.println("aa"+pokemonID2+" "+nomPokemon1+" "+nomPokemon2);
+		LOGGER.debug("aa"+pokemonID2+" "+nomPokemon1+" "+nomPokemon2);
 		try {
 			Image imgPokemon1 = ImageIO.read(new File("images/"+nomPokemon1+"Dos.png"));
 			g.drawImage(imgPokemon1, -150, 220, this);
