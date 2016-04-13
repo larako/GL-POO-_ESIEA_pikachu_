@@ -48,6 +48,8 @@ public class PokemonInterface extends JPanel implements ActionListener{
 	private boolean test= false;
 	private boolean gameOver=false;
 	private Attack a;
+	private int lifeMax1 = 0;
+	private int lifeMax2 = 0;
 
 	public PokemonInterface(){
 		  EuromillionDAO eurom= new EuromillionDAO();
@@ -109,6 +111,8 @@ public class PokemonInterface extends JPanel implements ActionListener{
 		nomAttack4.setBounds(350,650,140,20);
 	    this.add(nomAttack4);
 	    this.setVisible(true);
+	    lifeMax1 = pokemon1.getHp();
+	    lifeMax2 = pokemon2.getHp();
 			
 		repaint();
 		jeu = new MoteurDeJeu(pokemon1,pokemon2);	
@@ -118,6 +122,28 @@ public class PokemonInterface extends JPanel implements ActionListener{
     	if (number==1) return pokemon1;
     	else return pokemon2;
     }
+	
+	/*-----*/
+	
+	
+	
+	public void life(Graphics g){
+
+		if ((pokemon1.getHp()*2)>lifeMax1)g.setColor(Color.GREEN);
+		else g.setColor(Color.RED);
+		g.fillRoundRect(210, 501, (100*pokemon1.getHp())/lifeMax1, 9 ,10, 10);
+		
+		if ((pokemon2.getHp()*2)>lifeMax2)g.setColor(Color.GREEN);
+		else g.setColor(Color.RED);
+		g.fillRoundRect(570, 171, (100*pokemon2.getHp())/lifeMax2, 9, 10, 10);
+		
+		
+		g.setColor(Color.black);
+		g.drawRoundRect(210, 500, 100, 10, 10, 10);
+		g.drawRoundRect(570, 170, 100, 10, 10, 10);
+	}
+	
+	/*------*/
 	
 	public void paintComponent (Graphics g){	
 		
@@ -159,7 +185,7 @@ public class PokemonInterface extends JPanel implements ActionListener{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		life(g);
 		stat.setPokemonID1(pokemonID1);
 		stat.setPokemonID2(pokemonID2);
 		stat.paintComponent(g);
@@ -167,7 +193,7 @@ public class PokemonInterface extends JPanel implements ActionListener{
 		
 		if (deplacementPok2){
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(500);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -196,11 +222,19 @@ public class PokemonInterface extends JPanel implements ActionListener{
 		Font font = new Font("Arial", Font.BOLD, 20);
 		g.setFont(font);
 		g.setColor(Color.black);
+		
+		if(a.getPp()==0){
+			g.drawString("L'attaque n'est plus disponible! ",200,750);
+			
+		}
+		else {
 		if(a.getValue()>0)
 		g.drawString("Vous avez choisi l'attaque: "+a.getName()+" d'une valeur de: "+a.getValue(),100,750);
 		else
 			g.drawString("Vous avez choisi l'attaque: "+a.getName(),200,750);
 		}
+		}
+		
 		else{
 			Font font = new Font("Arial", Font.BOLD, 20);
 			g.setFont(font);
