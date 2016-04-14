@@ -206,22 +206,25 @@ public class PokemonInterface extends JPanel implements ActionListener{
 			deplacementPok2=false;
 			x2=100;		
 		}		
-			if(gameOver)
-			{
-				/*
-				setBackground(Color.black);
-				Font font = new Font("Courier", Font.BOLD, 20);
-				g.setFont(font);
-				g.setColor(Color.red);
-				int x = this.getWidth() / 2;
-				int y = this.getHeight() / 2;
-				g.drawString("Game Over", x, y);
-				g.drawString("the Winner is : "+jeu.Winner().getName(),x,y+30);*/
-				//default title and icon
-				JOptionPane.showMessageDialog(frame, "Game Over"+" the Winner is : "+jeu.Winner().getName());
-				System.exit(0); 
-			}
+			
 	}
+		if(gameOver)
+		{
+			
+			setBackground(Color.black);
+			Font font = new Font("Courier", Font.BOLD, 20);
+			g.setFont(font);
+			g.setColor(Color.red);
+			int x = this.getWidth() / 2;
+			int y = this.getHeight() / 2;
+			g.drawString("Game Over", x, y);
+			g.drawString("the Winner is : "+jeu.Winner().getName(),x,y+30);
+			//default title and icon
+			
+			//JOptionPane.showMessageDialog(frame, "Game Over"+" the Winner is : "+jeu.Winner().getName());
+			//System.exit(0); 
+		}
+		
 		if(a!=null){
 		Font font = new Font("Arial", Font.BOLD, 20);
 		g.setFont(font);
